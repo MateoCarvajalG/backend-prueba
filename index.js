@@ -28,8 +28,8 @@ app.get('/productos/producto/:id', (req, res) => {
     ID=res.send(id)
     console.log(ID)
 })
-const port = 3000
-app.listen(port, () => {
-    console.log(`Running on http://localhost:${port}`)
+app.set("port", process.env.PORT || 3000);
+app.listen(app.get("port"), () => {
+  console.log("Server on port " + app.get("port") + " on dev");
 });
 
