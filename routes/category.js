@@ -1,5 +1,5 @@
 const router = require('express').Router();
-const categoryController= require('../../controllers/categoriesController.js')
+const categoryController= require('../controllers/categoriesController')
 
 router.get('/list',categoryController.listar);
 

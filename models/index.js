@@ -4,28 +4,28 @@ const sequelize = new Sequelize('bsale_test','bsale_test','bsale_test',{
     host: 'mdb-test.c6vunyturrl6.us-west-1.rds.amazonaws.com',
     dialect: 'mysql',
     "logging": false,
-    define: { 
-        freezeTableName: true, 
-        timestamps: false
-    },
-    pool:{
-        max:5,
-        min:0,
-        require:30000,
-        idle:10000 
-    }
+     define: { 
+         freezeTableName: true, 
+         timestamps: false
+     },
+     pool:{
+         max:5,
+         min:0,
+         require:30000,
+         idle:10000 
+     }
 })
 
 
 sequelize.authenticate()
   .then(() => {
-    console.log('Conectado')
+    console.log(' Base De Datos conectada')
   })
   .catch(err => {
-    console.log('No se conecto')
+    console.log('No se logro conectar la Base De Datos')
   })
-const basededatosproduct="product"
-const productos = sequelize.define(basededatosproduct,{
+
+const productos = sequelize.define('product',{
      id: { type: Sequelize.INTEGER, primaryKey:true},
      name: Sequelize.STRING,
      url_image: Sequelize.STRING,
@@ -39,6 +39,7 @@ const categorias= sequelize.define('category',{
      id: { type: Sequelize.INTEGER, primaryKey:true},
      name: Sequelize.STRING,
 })
+
 module.exports={
     productos,categorias
  };
